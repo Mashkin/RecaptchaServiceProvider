@@ -27,7 +27,7 @@ class RecaptchaServiceProvider implements ServiceProviderInterface
 
     public function boot (Application $app)
     {
-
+        $app['recaptcha.language'] = $app['locale'];
     }
 
 }
