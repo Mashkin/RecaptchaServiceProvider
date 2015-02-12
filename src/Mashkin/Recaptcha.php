@@ -11,6 +11,7 @@ namespace Mashkin;
 
 class Recaptcha {
 
+    const SCRIPT_URL = 'https://www.google.com/recaptcha/api.js';
     const API_URL = 'https://www.google.com/recaptcha/api/siteverify';
     const API_VERSION = 2;
 
@@ -43,15 +44,22 @@ class Recaptcha {
         return sprintf('<div class="g-recaptcha"%s></div>', $extras);
     }
 
-    public function getHtmlScript (array $parameters = array())
+    public function getScriptUrl (array $parameters = array())
     {
         $parameters = array_replace(array( 'hl' => $this->language ), $parameters);
-        $url = 'https://www.google.com/recaptcha/api.js';
+        $url = self::SCRIPT_URL;
         $qs = http_build_query($parameters);
 
         if(strlen($qs)) {
             $url .= '?' . $qs;
         }
+
+        return $url;
+    }
+
+    public function getHtmlScript (array $parameters = array())
+    {
+        $url = $this->getScriptUrl($parameters);
         return sprintf('<script src="%s" async defer></script>', $url);
     }
 
