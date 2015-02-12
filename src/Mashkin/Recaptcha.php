@@ -29,7 +29,7 @@ class Recaptcha {
         $this->streamContext = $streamContext;
     }
 
-    public function getHtmlElement ($parameters)
+    public function getHtmlElement (array $parameters = array())
     {
         $parameters = array_replace(array(
             'sitekey' => $this->siteKey
