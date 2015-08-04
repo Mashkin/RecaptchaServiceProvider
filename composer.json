@@ -1,0 +1,17 @@
+{
+    "name": "mashkin/recaptcha-serviceprovider",
+    "description": "Provides Google's ReCaptcha API as a Silex ServiceProvider",
+    "keywords": ["silex","recaptcha","captcha","serviceprovider"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mashkin",
+            "email": "git@mashkin.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mashkin\\": "src/"
+        }
+    }
+}
