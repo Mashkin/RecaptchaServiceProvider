@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Mashkin\\": "src/"
+            "Mashkin\\": "src/Mashkin/"
         }
     }
 }
