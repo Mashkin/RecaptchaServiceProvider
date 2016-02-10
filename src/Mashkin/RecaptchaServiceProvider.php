@@ -16,18 +16,15 @@ class RecaptchaServiceProvider implements ServiceProviderInterface
 
     public function register (Application $app)
     {
-        $app['recaptcha.language'] = 'en';
         $app['recaptcha.streamContext'] = null;
 
         $app['recaptcha'] = $app->share(function () use ($app) {
             return new Recaptcha($app['recaptcha.sitekey'], $app['recaptcha.secret'],
-                $app['recaptcha.language'], $app['recaptcha.streamContext']);
+                $app['locale'], $app['recaptcha.streamContext']);
         });
     }
 
     public function boot (Application $app)
-    {
-        $app['recaptcha.language'] = $app['locale'];
-    }
+    {}
 
 }
