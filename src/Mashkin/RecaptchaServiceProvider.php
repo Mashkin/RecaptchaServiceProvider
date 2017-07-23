@@ -8,23 +8,23 @@
 
 namespace Mashkin;
 
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 class RecaptchaServiceProvider implements ServiceProviderInterface
 {
 
-    public function register (Application $app)
+    public function register(Container $app)
     {
         $app['recaptcha.streamContext'] = null;
 
-        $app['recaptcha'] = $app->share(function () use ($app) {
+        $app['recaptcha'] = function () use ($app) {
             return new Recaptcha($app['recaptcha.sitekey'], $app['recaptcha.secret'],
                 $app['locale'], $app['recaptcha.streamContext']);
-        });
+        };
     }
 
-    public function boot (Application $app)
+    public function boot (Container $app)
     {}
 
 }
